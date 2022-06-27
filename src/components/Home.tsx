@@ -66,60 +66,62 @@ export const Home: React.FC = () => {
 
   return (
     <StyledRoot>
-      <StyledHeaderBox>
-        <Text variant="h6">Users</Text>
-        <StyledMainButton variant="contained" onClick={handleAddUser}>
-          Create new
-        </StyledMainButton>
-      </StyledHeaderBox>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }}>
-          <TableHead>
-            <TableRow>
-              {TABLE_FIELDS.map((field) => (
-                <StyledTableCell>{field}</StyledTableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {userPages.length > 0 &&
-              userPages[page - 1].map((user) => (
-                <StyledTableRow key={user.id}>
-                  <StyledTableCell scope="row">
-                    {user.firstName}
-                  </StyledTableCell>
-                  <StyledTableCell>{user.lastName}</StyledTableCell>
-                  <StyledTableCell>{user.email}</StyledTableCell>
-                  <StyledTableCell>{user.country}</StyledTableCell>
-                  <StyledTableCell>{user.address}</StyledTableCell>
-                  <StyledTableCell
-                    style={{
-                      display: "flex",
-                      gap: 10,
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <IconButton
-                      aria-label="delete"
-                      size="small"
-                      onClick={() => handleDelete(user)}
+      <Box sx={{ width: "100%", height: "730px" }}>
+        <StyledHeaderBox>
+          <Text variant="h6">Users</Text>
+          <StyledMainButton variant="contained" onClick={handleAddUser}>
+            Create new
+          </StyledMainButton>
+        </StyledHeaderBox>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }}>
+            <TableHead>
+              <TableRow>
+                {TABLE_FIELDS.map((field) => (
+                  <StyledTableCell>{field}</StyledTableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {userPages.length > 0 &&
+                userPages[page - 1].map((user) => (
+                  <StyledTableRow key={user.id}>
+                    <StyledTableCell scope="row">
+                      {user.firstName}
+                    </StyledTableCell>
+                    <StyledTableCell>{user.lastName}</StyledTableCell>
+                    <StyledTableCell>{user.email}</StyledTableCell>
+                    <StyledTableCell>{user.country}</StyledTableCell>
+                    <StyledTableCell>{user.address}</StyledTableCell>
+                    <StyledTableCell
+                      style={{
+                        display: "flex",
+                        gap: 10,
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
                     >
-                      <DeleteIcon fontSize="inherit" />
-                    </IconButton>
-                    <IconButton
-                      aria-label="edit"
-                      size="small"
-                      onClick={() => handleEdit(user)}
-                    >
-                      <EditIcon fontSize="inherit" />
-                    </IconButton>
-                  </StyledTableCell>
-                </StyledTableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                      <IconButton
+                        aria-label="delete"
+                        size="small"
+                        onClick={() => handleDelete(user)}
+                      >
+                        <DeleteIcon fontSize="inherit" />
+                      </IconButton>
+                      <IconButton
+                        aria-label="edit"
+                        size="small"
+                        onClick={() => handleEdit(user)}
+                      >
+                        <EditIcon fontSize="inherit" />
+                      </IconButton>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
       <Box
         sx={{
           display: "flex",
