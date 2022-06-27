@@ -8,7 +8,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Link from "@mui/material/Link";
 import {
   Text,
   StyledRoot,
@@ -52,13 +51,18 @@ export const Home: React.FC = () => {
     navigate("/edit");
   };
 
+  const handleAddUser = () => {
+    setSelected(null);
+    navigate("/add");
+  };
+
   return (
     <StyledRoot>
       <StyledHeaderBox>
         <Text variant="h6">Users</Text>
-        <Link href="/add" underline="none">
-          <StyledMainButton variant="contained">Create new</StyledMainButton>
-        </Link>
+        <StyledMainButton variant="contained" onClick={handleAddUser}>
+          Create new
+        </StyledMainButton>
       </StyledHeaderBox>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }}>

@@ -15,6 +15,7 @@ export function updateUsers(users: User[]): void {
 }
 
 export async function getCountries() {
+  //mazas failas del to cia palikau :/
   try {
     const response = await Axios.get("https://restcountries.com/v2/all");
     return response.data;
