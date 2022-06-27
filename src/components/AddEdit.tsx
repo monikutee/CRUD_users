@@ -27,13 +27,7 @@ const StyledFormComponent = styled("form")`
 `;
 
 type Keys = (keyof User)[];
-const ProjectKeys: Keys = [
-  "firstName",
-  "lastName",
-  "email",
-  "country",
-  "address",
-];
+const UserKeys: Keys = ["firstName", "lastName", "email", "country", "address"];
 
 export const AddEdit: React.FC = () => {
   const {
@@ -56,21 +50,21 @@ export const AddEdit: React.FC = () => {
 
   React.useEffect(() => {
     if (selected) {
-      ProjectKeys.forEach((key) => setValue(key, selected[key]));
+      UserKeys.forEach((key) => setValue(key, selected[key]));
     }
   }, [setValue, selected]);
 
   const onSubmit: SubmitHandler<User> = (data) => {
     if (selected) {
-      const updatedProjects = users.map((obj) => {
+      const updatedUsers = users.map((obj) => {
         if (obj.id === selected.id) {
           return { ...data, id: obj.id };
         }
         return obj;
       });
 
-      updateUsers(updatedProjects);
-      setUsers(updatedProjects);
+      updateUsers(updatedUsers);
+      setUsers(updatedUsers);
       setSelected(null);
       navigate("/");
     } else {
@@ -83,7 +77,7 @@ export const AddEdit: React.FC = () => {
 
   return (
     <StyledRoot>
-      <Text variant="h6">Add new project</Text>
+      <Text variant="h6">Add new user</Text>
       <StyledFormComponent onSubmit={handleSubmit(onSubmit)}>
         <TextField
           label="First Name"
