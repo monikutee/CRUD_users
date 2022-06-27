@@ -81,29 +81,25 @@ export const AddEdit: React.FC = () => {
       <StyledFormComponent onSubmit={handleSubmit(onSubmit)}>
         <TextField
           label="First Name"
+          required
           {...register("firstName", { required: true })}
         />
-        {errors.firstName && <span>This field is required</span>}
-
         <TextField
           label="Last Name"
+          required
           {...register("lastName", { required: true })}
         />
-        {errors.lastName && <span>This field is required</span>}
-
         <TextField
           type="email"
           label="Email"
+          required
           {...register("email", { required: true })}
         />
-        {errors.email && <span>This field is required</span>}
-
         <TextField
           label="Address"
+          required
           {...register("address", { required: true })}
         />
-        {errors.email && <span>This field is required</span>}
-
         <Autocomplete
           fullWidth
           options={countries || []}
@@ -134,7 +130,6 @@ export const AddEdit: React.FC = () => {
           )}
         />
         {errors.country && <span>This field is required</span>}
-
         <StyledButtonBox>
           <Link href="/" underline="none">
             <StyledSimpleButton variant="contained">Cancel</StyledSimpleButton>

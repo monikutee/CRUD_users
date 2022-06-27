@@ -36,7 +36,7 @@ export const ContextProvider: React.FC<ContexProps> = ({
 
   React.useEffect(() => {
     if (!users.length) {
-      setUsers(JSON.parse(getUsers()));
+      setUsers(getUsers());
     }
   }, [setUsers, users.length]);
 

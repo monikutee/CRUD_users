@@ -66,7 +66,7 @@ export const Home: React.FC = () => {
 
   return (
     <StyledRoot>
-      <Box sx={{ width: "100%", height: "730px" }}>
+      <Box sx={{ width: "100%", minHeight: "730px" }}>
         <StyledHeaderBox>
           <Text variant="h6">Users</Text>
           <StyledMainButton variant="contained" onClick={handleAddUser}>
