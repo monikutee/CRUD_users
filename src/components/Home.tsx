@@ -25,6 +25,14 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
+const TABLE_FIELDS = [
+  "First Name",
+  "Last Name",
+  "Email",
+  "Country",
+  "Address",
+  "Actions",
+];
 const USERS_PER_PAGE = 10;
 export const Home: React.FC = () => {
   const { users, setUsers, setSelected } = React.useContext(Context);
@@ -68,12 +76,9 @@ export const Home: React.FC = () => {
         <Table sx={{ minWidth: 700 }}>
           <TableHead>
             <TableRow>
-              <StyledTableCell>First Name</StyledTableCell>
-              <StyledTableCell>Last Name</StyledTableCell>
-              <StyledTableCell>Email</StyledTableCell>
-              <StyledTableCell>Country</StyledTableCell>
-              <StyledTableCell>Address</StyledTableCell>
-              <StyledTableCell>Actions</StyledTableCell>
+              {TABLE_FIELDS.map((field) => (
+                <StyledTableCell>{field}</StyledTableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>

@@ -45,6 +45,21 @@ export const AddEdit: React.FC = () => {
   const navigate = useNavigate();
   const { users, setUsers, setSelected, selected } = React.useContext(Context);
   const [countries, setCountries] = React.useState<Country[] | null>(null);
+
+  React.useEffect(() => {
+    const loadCountries = async () => {
+      const countriesData = await getCountries();
+      setCountries(countriesData);
+    };
+    loadCountries();
+  }, []);
+
+  React.useEffect(() => {
+    if (selected) {
+      ProjectKeys.forEach((key) => setValue(key, selected[key]));
+    }
+  }, [setValue, selected]);
+
   const onSubmit: SubmitHandler<User> = (data) => {
     if (selected) {
       const updatedProjects = users.map((obj) => {
@@ -65,20 +80,6 @@ export const AddEdit: React.FC = () => {
       navigate("/");
     }
   };
-
-  React.useEffect(() => {
-    const loadCountries = async () => {
-      const countriesData = await getCountries();
-      setCountries(countriesData);
-    };
-    loadCountries();
-  }, []);
-
-  React.useEffect(() => {
-    if (selected) {
-      ProjectKeys.forEach((key) => setValue(key, selected[key]));
-    }
-  }, [setValue, selected]);
 
   return (
     <StyledRoot>
@@ -138,8 +139,8 @@ export const AddEdit: React.FC = () => {
             />
           )}
         />
-
         {errors.country && <span>This field is required</span>}
+
         <StyledButtonBox>
           <Link href="/" underline="none">
             <StyledSimpleButton variant="contained">Cancel</StyledSimpleButton>
